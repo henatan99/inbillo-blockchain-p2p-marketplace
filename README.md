@@ -46,7 +46,7 @@ Other modules
 
 ### scripts in package.json
 
-`"start:dev": "nodemon"`
+`"dev": "nodemon"`
 
 ## Creating production build
 
@@ -64,7 +64,7 @@ Other modules
 
 ## Usage 
 
-- `npm run start:dev`
+- `npm run dev`
 - `npm run build`
 - `npm run start`
 

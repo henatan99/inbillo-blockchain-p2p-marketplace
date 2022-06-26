@@ -69,5 +69,36 @@ Other modules
 - `npm run start`   // to launch app on production server
 
 
-## Databse settup 
+## Databse setup 
+
+### Creating a database and user on ubuntu treminal
+
+- `mysql -uroot -p`
+- `Enter password:` // Enter root password
+- `mysql> CREATE DATABASE inbillo;` // Creat database wth name inbillo
+- `mysql> show databases;` // see database created 
+- `mysql> CREATE USER 'inbillouser'@'localhost' IDENTIFIED BY 'Myinbillopass@1';`  // create database user (inbillouser) with password 'Myinbillopass@1';
+- `mysql> GRANT ALL ON inbillo.* To 'inbillouser'@'localhost' WITH GRANT OPTION;`   // grant db access to user 
+
+### Creating a database and user with db.createDb route
+
+`app.get('/createdb', (req, res) => {
+    console.log('creating db...')
+    let sql = 'CREATE DATABASE inbillo';
+    db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log(err);
+        res.send('databse created ...');
+    });
+});`
+
+
+- But the initial user should be root
+
+`const db = mysql.createConnection({
+    host      : 'localhost',
+    user      : 'root',
+    password  : 'Myreigntour@1',
+    database  : 'inbillo'
+});`
 

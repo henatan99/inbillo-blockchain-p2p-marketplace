@@ -102,3 +102,24 @@ Other modules
     database  : 'inbillo'
 });`
 
+
+## App requirement 
+
+- Context: inBillo is an operator, which delivers functionality of financial liability management. Each inBillo user operates on inBillo market-place in a P2P manner by performing financial operations like buying/selling financial instruments, lending/borrowing money etc.
+
+- Each inBillo user is able to interact with every other inBillo user in a term of performing these financial operations.
+
+- As a result, each action depends on an inbound bank transfer (in a case of borrowing money, selling financial instruments etc.) or outbound money bank transfer (in a case of buying financial instruments, lending own money etc.).
+
+- Each financial operation is logged in the internal inBIllo SQL database as well as on the BlockChain network. At the end of each billing period (i.e. financial day end) bank accounts must be re-balanced, to reflect proper bank account balance for each user, as each user would have an individual bank account.
+
+### Could you please design SQL data structures/schema which:
+
+- ensures ability to manage and log all financial operations made by inBillo users,
+- ensures possibility of bank account balancing for all inBillo users,
+
+### Could you design and implement an algorithm please, which ensures proper bank account balance, which is performed after each financial period ends (i.e. at the end of the day)?
+
+As expected, the result of the designed algorithm is a set of direct debit instructions for each inBillo user bank account (each instruction is a pair: destination bank account number and amount). Please do use the above SQL schema as the source of the data for the calculations. Please use TypeScript/NodeJS for this implementation
+
+### Please implement the simplest Solidity smart contract that would model above financial operations, and use any blockchain observing mechanism (like The Graph for example) to populate a SQL database with the financial operations observed on-chain.

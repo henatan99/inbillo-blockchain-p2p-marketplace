@@ -64,8 +64,10 @@ Other modules
 
 ## Usage 
 
-- `npm run dev`
-- `npm run build`
-- `npm run start`
+- `npm run dev`    // to run app in development env
+- `npm run build`  // to clean build before deploy to  production 
+- `npm run start`   // to launch app on production server
 
+
+## Databse settup 
 

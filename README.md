@@ -123,3 +123,21 @@ Other modules
 As expected, the result of the designed algorithm is a set of direct debit instructions for each inBillo user bank account (each instruction is a pair: destination bank account number and amount). Please do use the above SQL schema as the source of the data for the calculations. Please use TypeScript/NodeJS for this implementation
 
 ### Please implement the simplest Solidity smart contract that would model above financial operations, and use any blockchain observing mechanism (like The Graph for example) to populate a SQL database with the financial operations observed on-chain.
+
+## Modeling the entities relationship for the liabilit management 
+
+### Transactions 
+- The attributes are id(INT(10)), document_id INT(10), transaction_date(Date), description(VARCHAR(255))
+- Indexes: PRIMARY transactions_transaction_date_idx, transactions_document_id_fk
+
+### Accounts 
+- The attributes are id(BIGINT(19)), account_name(VARCHAR(255)), account_type(SMALLINT(5)), account_holder, official_code(VARCHAR(20)), is_archived(TINYINT(3)), inserted_at(DATETIME), inserted_by(VARCHAR(255)), updated_at(DATETIME), updated_by(VARCHAR(255))
+- Indexes: PRIMARY accounts_account_type_idx, accounts_official_code_idx, account_holder_id_fk
+
+### Ledger entries 
+- The attributes are id(INT(10)), transaction_id(INT(10)), account_id(BIGINT(19)), entry_type('buy', 'sell', 'lend', 'borrow' ), amount(DECIMAL(20, 2)), person_id(INT(10))
+- Indexes: PRIMARY ledger_entries_entry_type_idx, ledger_entries_transaction_id_fk, ledger_entries_account_id_fk, ledger_entries_person_id_fk
+
+### Documents 
+- The attributes are id(INT(10)), document_date(DATE), document_no(VARCHAR(100)), description(VARCHAR(500)), document_comments(VARCHAR(4000)), internal_comments(VARCHAR(500)), document_type(SMALLINT(5)), inserted_at(DATETIME), inserted_by(VARCHAR(255)), upadted_at(DATETIME), updated_by(VARCHAR(255))
+
